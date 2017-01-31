@@ -1,0 +1,28 @@
+<div>
+	<a ng-href="/" style="text-decoration: none;" class="col-md-1 col-md-push-1 col-md-pull-10">Home</a>
+	<br />
+</div>
+<div class="media" ng-show="{{product.productDetail != null || product.productDetail != undefined}}">
+  <div class="media-left media-middle">
+      <img ng-src={{product.productDetail.url}}>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{product.productDetail.name}}</h4>
+    {{product.productDetail.description}}
+    <br />
+    <br />
+	<span>
+		<span class="input-group disabled col-md-3">
+		  <span class="input-group-addon">&#8377;</span>
+		  <input type="text" class="form-control" ng-value={{::product.productDetail.price}} ng-disabled="true">
+		  <span class="input-group-addon" id="basic-addon2"><b>Stock:</b> {{product.productDetail.stock}}</span>
+		</span>
+		<span>
+		 	<span class="col-md-1">
+				<h5>rating:</h5>{{product.productDetail.rating}}
+			</span>
+			<h3><button type="button" class="btn btn-primary col-md-3 col-md-offset-1" ng-disabled="{{product.productDetail.stock == 0}}" ng-click="product.addToCart(product.productDetail)">Add to Cart</button></h3>
+		</span>
+	</div>
+  </span>
+</div>

@@ -1,0 +1,43 @@
+<div>
+	<a ng-href="/" style="text-decoration: none;" class="col-md-1 col-md-push-1 col-md-pull-10">Home</a>
+	<br />
+</div>
+<div class="table-responsive">
+	<table class="table">
+		<tr>
+			<td>Product Image</td>
+			<td>Product Name</td>
+			<td>Product Quantity</td>
+			<td>Price of the product</td>
+			<td></td>
+		</tr>
+		<tr ng-repeat="cart in myCart.carts">
+			<td><img ng-src={{cart.url}}></td>
+			<td><a ng-href="#!/product/{{cart.id}}">{{cart.name}}</a></td>
+			<td ng-form="inlineForm">
+			<input type="number" name="input" class="form-control" ng-model="cart.noOfItems">
+			<br/>
+			<span ng-show="inlineForm.$dirty && inlineForm.$invalid">
+            	<span ng-show="inlineForm.$error.number">Only Numbers!!!</span>
+         	</span>
+         	</td>
+			<td>{{cart.price | currency:'&#8377;'}}</td>
+			<td><button type="button" class="close" aria-label="Close" ng-click="myCart.deleteFromCart(cart)"><span aria-hidden="true">&times;</span></button></td>
+		</tr>
+	</table>
+	
+	<span class="col-md-6 col-md-offset-6">
+		<ul class="list-inline">
+			<li>Total Price :</li>
+			<li>&#8377;{{myCart.calculateTotalPrice(myCart.carts)}}</li>
+		</ul>
+		<ul class="list-inline"">
+			<li>Total Number of Items:</li>
+			<li>{{myCart.totalProducts(myCart.carts)}}</li>
+		</ul>
+	</span>
+	<br /><br />
+	<div>
+		<button type="button" class="btn btn-success col-md-3 col-md-offset-6" ng-disabled="myCart.totalProducts(myCart.carts) == 0" ng-click="myCart.submitCheckout(myCart.carts)">Checkout</button>
+	</div>
+</div>

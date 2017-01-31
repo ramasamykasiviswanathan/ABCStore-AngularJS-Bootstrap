@@ -1,0 +1,23 @@
+<div>
+	<a class="col-md-2 col-md-push-10" ng-href="#!/cart">Cart</a>
+	<span ng-if="items.list.length!=0" class="col-md-3 col-md-pull-2"> Showing: {{results.length}}/{{items.list.length}}</span>
+</div>
+<br />
+<br />
+<span></span>
+<div class="table-responsive">
+	<table class="table">
+		<tr>
+			<td>Product Image</td>
+			<td><input type="text" placeholder="Product Name" ng-model="query.name"></td>
+			<td><input type="text" placeholder="Number of stocks available" ng-model="query.stock"></td>
+			<td><input type="text" placeholder="Price of the product" ng-model="query.price"></td>
+		</tr>
+		<tr ng-repeat="item in items.list | filter:query as results">
+			<td><img ng-src={{item.url}}></td>
+			<td><a ng-href="#!/product/{{item.id}}">{{item.name}}</a></td>
+			<td>{{item.stock}}</td>
+			<td>{{item.price | currency:'&#8377;'}}</td>
+		</tr>
+	</table>
+</div>

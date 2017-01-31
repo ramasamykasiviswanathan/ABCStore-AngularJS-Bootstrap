@@ -1,0 +1,24 @@
+<div class="media" ng-repeat="item in checkout.checkoutList">
+  <div class="media-left media-middle">
+      <img ng-src={{item.url}}>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{item.name}}</h4>
+    {{item.description}}
+    <br />
+    <br />
+	<span>
+		<span class="input-group disabled col-md-4">
+		  <span class="input-group-addon">Total Cost: &#8377;</span>
+		  <!-- <input type="text" class="form-control" ng-disabled="true" placeholder="{{product.productDetail.price}}"> -->
+		  <input type="text" class="form-control" ng-value="item.price * item.noOfItems" ng-disabled="true">
+		  <span class="input-group-addon" id="basic-addon2"><b>No Of Items Ordered:</b> {{item.noOfItems}}</span>
+		</span>
+		<span>
+		 	<span class="col-md-1">
+				<h5>rating:</h5>{{item.rating}}
+			</span>
+		</span>
+	</div>
+  </span>
+</div>
